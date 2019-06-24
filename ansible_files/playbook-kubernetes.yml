@@ -1,0 +1,17 @@
+---
+- hosts: mynodes2
+  become: true
+  tasks:
+  - name: Enabling docker 
+    shell: sudo systemctl enable docker
+  - name: Installing Curl
+    shell: sudo apt-get -y install curl
+  - name: Downloading gpg key for kubernetes
+    shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+  - name: Adding a repository
+    shell: sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+  - name: Installing kubeadm
+    shell: sudo apt-get -y install kubeadm
+  - name: Disabling Swap space
+    shell: sudo swapoff -a
+

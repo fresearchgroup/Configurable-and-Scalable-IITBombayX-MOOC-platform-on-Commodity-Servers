@@ -1,0 +1,15 @@
+[test_servers]
+node1@10.130.153.248
+soumyakant@10.130.153.221
+
+[swarm_nodes]
+eworker1@10.130.154.249
+eworker2@10.130.154.208
+
+[mynodes]
+node100@10.130.154.220
+node101@10.130.154.224
+
+[mynodes2]
+node102@10.130.153.219
+node103@10.130.153.229
