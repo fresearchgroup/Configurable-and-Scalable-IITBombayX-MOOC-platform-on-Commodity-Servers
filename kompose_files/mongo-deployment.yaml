@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mongo
+  name: mongo
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: mongo
+    spec:
+      containers:
+      - args:
+        - mongod
+        - --smallfiles
+        - --nojournal
+        - --storageEngine
+        - wiredTiger
+        image: mongo:3.2.16
+        name: edx-devstack-mongo
+        resources: {}
+        volumeMounts:
+        - mountPath: /data/db
+          name: mongo-data
+      hostname: mongo-devstack-edx
+      restartPolicy: Always
+      volumes:
+      - name: mongo-data
+        persistentVolumeClaim:
+          claimName: mongo-data
+status: {}

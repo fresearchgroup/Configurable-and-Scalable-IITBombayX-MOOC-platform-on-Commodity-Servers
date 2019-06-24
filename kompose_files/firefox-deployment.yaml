@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: firefox
+  name: firefox
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: firefox
+    spec:
+      containers:
+      - image: edxops/firefox:ironwood.master
+        name: edx-devstack-firefox
+        ports:
+        - containerPort: 5900
+        resources: {}
+        volumeMounts:
+        - mountPath: /edx/app/e2e/edx-e2e-tests/upload_files
+          name: firefox-claim0
+        - mountPath: /edx/app/edxapp/edx-platform/common/test/data
+          name: firefox-claim1
+      hostname: firefox-devstack-edx
+      restartPolicy: Always
+      volumes:
+      - name: firefox-claim0
+        persistentVolumeClaim:
+          claimName: firefox-claim0
+      - name: firefox-claim1
+        persistentVolumeClaim:
+          claimName: firefox-claim1
+status: {}

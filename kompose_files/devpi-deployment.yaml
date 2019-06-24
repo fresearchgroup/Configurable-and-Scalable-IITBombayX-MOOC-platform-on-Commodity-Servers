@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: devpi
+  name: devpi
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: devpi
+    spec:
+      containers:
+      - image: edxops/devpi:ironwood.master
+        name: edx-devstack-devpi
+        ports:
+        - containerPort: 3141
+        resources: {}
+        volumeMounts:
+        - mountPath: /data
+          name: devpi-data
+      hostname: devpi-devstack-edx
+      restartPolicy: Always
+      volumes:
+      - name: devpi-data
+        persistentVolumeClaim:
+          claimName: devpi-data
+status: {}

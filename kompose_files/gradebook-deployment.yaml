@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: gradebook
+  name: gradebook
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: gradebook
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - npm install && npm run start
+        env:
+        - name: NODE_ENV
+          value: development
+        image: node:10
+        name: edx-devstack-gradebook
+        ports:
+        - containerPort: 1994
+        resources: {}
+        workingDir: /edx/app/gradebook
+      restartPolicy: Always
+status: {}

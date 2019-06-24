@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: chrome
+  name: chrome
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: chrome
+    spec:
+      containers:
+      - image: edxops/chrome:ironwood.master
+        name: edx-devstack-chrome
+        ports:
+        - containerPort: 5900
+        resources: {}
+        volumeMounts:
+        - mountPath: /edx/app/e2e/edx-e2e-tests/upload_files
+          name: chrome-claim0
+        - mountPath: /edx/app/edxapp/edx-platform/common/test/data
+          name: chrome-claim1
+      hostname: chrome-devstack-edx
+      restartPolicy: Always
+      volumes:
+      - name: chrome-claim0
+        persistentVolumeClaim:
+          claimName: chrome-claim0
+      - name: chrome-claim1
+        persistentVolumeClaim:
+          claimName: chrome-claim1
+status: {}

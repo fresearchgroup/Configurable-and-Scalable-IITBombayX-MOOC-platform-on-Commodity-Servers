@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: discovery
+  name: discovery
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: discovery
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - source /edx/app/discovery/discovery_env && while true; do python /edx/app/discovery/discovery/manage.py
+          runserver 0.0.0.0:18381; sleep 2; done
+        env:
+        - name: ENABLE_DJANGO_TOOLBAR
+          value: "1"
+        - name: TEST_ELASTICSEARCH_URL
+          value: http://edx.devstack.elasticsearch:9200
+        image: edxops/discovery:ironwood.master
+        name: edx-devstack-discovery
+        ports:
+        - containerPort: 18381
+        resources: {}
+        stdin: true
+        tty: true
+        volumeMounts:
+        - mountPath: /edx/var/discovery/
+          name: discovery-assets
+      hostname: discovery-devstack-edx
+      restartPolicy: Always
+      volumes:
+      - name: discovery-assets
+        persistentVolumeClaim:
+          claimName: discovery-assets
+status: {}

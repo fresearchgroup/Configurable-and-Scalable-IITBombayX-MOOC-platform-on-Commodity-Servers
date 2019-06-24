@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: ecommerce
+  name: ecommerce
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: ecommerce
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - source /edx/app/ecommerce/ecommerce_env && while true; do python /edx/app/ecommerce/ecommerce/manage.py
+          runserver 0.0.0.0:18130; sleep 2; done
+        env:
+        - name: ENABLE_DJANGO_TOOLBAR
+          value: "1"
+        image: edxops/ecommerce:ironwood.master
+        name: edx-devstack-ecommerce
+        ports:
+        - containerPort: 18130
+        resources: {}
+        stdin: true
+        tty: true
+      hostname: ecommerce-devstack-edx
+      restartPolicy: Always
+status: {}

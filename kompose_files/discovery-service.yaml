@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: discovery
+  name: discovery
+spec:
+  ports:
+  - name: "18381"
+    port: 18381
+    targetPort: 18381
+  selector:
+    io.kompose.service: discovery
+status:
+  loadBalancer: {}
