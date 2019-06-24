@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: edx-notes-api
+  name: edx-notes-api
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: edx-notes-api
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - source /edx/app/edx_notes_api/edx_notes_api_env && while true; do python
+          /edx/app/edx_notes_api/edx_notes_api/manage.py runserver 0.0.0.0:18120 --settings
+          notesserver.settings.devstack; sleep 2; done
+        env:
+        - name: DB_ENGINE
+          value: django.db.backends.mysql
+        - name: DB_HOST
+          value: edx.devstack.mysql
+        - name: DB_NAME
+          value: notes
+        - name: DB_PASSWORD
+          value: password
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USER
+          value: notes001
+        - name: ELASTICSEARCH_URL
+          value: http://edx.devstack.elasticsearch:9200
+        - name: ENABLE_DJANGO_TOOLBAR
+          value: "1"
+        image: edxops/notes:ironwood.master
+        name: edx-devstack-edx-notes-api
+        ports:
+        - containerPort: 18120
+        resources: {}
+      hostname: edx-notes-api-devstack-edx
+      restartPolicy: Always
+status: {}

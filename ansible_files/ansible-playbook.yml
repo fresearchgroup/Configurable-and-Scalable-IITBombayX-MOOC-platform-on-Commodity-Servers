@@ -1,0 +1,9 @@
+---
+- name: Updating apt-get
+  hosts: test_servers
+  become: true
+  tasks:
+  - name: "Updating Packages"
+    apt:
+      update_cache: yes
+      upgrade: full

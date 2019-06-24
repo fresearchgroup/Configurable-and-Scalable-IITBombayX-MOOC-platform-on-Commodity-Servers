@@ -1,0 +1,6 @@
+---
+- hosts: test_servers
+  become: true
+  tasks:
+  - name: Install Hello-World Package
+    apt: name=npm state=present
