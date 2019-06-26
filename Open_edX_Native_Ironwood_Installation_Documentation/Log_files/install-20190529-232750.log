@@ -1,0 +1,57 @@
+Capturing output to logs/install-20190529-232750.log
+Installation started at 2019-05-29 23:27:50
+Installing release 'open-release/ironwood.1'
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python-software-properties is already the newest version (0.96.20.8).
+The following package was automatically installed and is no longer required:
+  snapd-login-service
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+gpg: keyring `/tmp/tmpg6a60aaj/secring.gpg' created
+gpg: keyring `/tmp/tmpg6a60aaj/pubring.gpg' created
+gpg: requesting key BA9EF27F from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmpg6a60aaj/trustdb.gpg: trustdb created
+gpg: key BA9EF27F: public key "Launchpad Toolchain builds" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+Ign:1 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 InRelease
+Hit:2 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 Release
+Get:3 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]
+Hit:4 http://in.archive.ubuntu.com/ubuntu xenial InRelease
+Get:6 http://in.archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+Hit:7 http://nginx.org/packages/ubuntu xenial InRelease
+Hit:8 http://ppa.edx.org xenial InRelease
+Hit:9 http://ppa.launchpad.net/git-core/ppa/ubuntu xenial InRelease
+Hit:10 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu xenial InRelease
+Get:11 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [435 kB]
+Hit:12 http://in.archive.ubuntu.com/ubuntu xenial-backports InRelease
+Get:13 http://in.archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [957 kB]
+Get:14 http://security.ubuntu.com/ubuntu xenial-security/universe i386 Packages [378 kB]
+Get:15 http://in.archive.ubuntu.com/ubuntu xenial-updates/main i386 Packages [824 kB]
+Hit:16 https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu xenial InRelease
+Get:17 http://in.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [748 kB]
+Get:18 http://in.archive.ubuntu.com/ubuntu xenial-updates/universe i386 Packages [685 kB]
+Fetched 4,246 kB in 6s (646 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following package was automatically installed and is no longer required:
+  snapd-login-service
+Use 'sudo apt autoremove' to remove it.
+The following packages have been kept back:
+  rabbitmq-server
+The following packages will be upgraded:
+  mongodb-org mongodb-org-mongos mongodb-org-server mongodb-org-shell
+  mongodb-org-tools
+5 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+Need to get 51.8 MB of archives.
+After this operation, 127 kB of additional disk space will be used.
+Get:1 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2/multiverse amd64 mongodb-org-shell amd64 3.2.22 [5,278 kB]
+Get:2 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2/multiverse amd64 mongodb-org-server amd64 3.2.22 [10.0 MB]
+Get:3 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2/multiverse amd64 mongodb-org-mongos amd64 3.2.22 [4,679 kB]
+Get:4 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2/multiverse amd64 mongodb-org-tools amd64 3.2.22 [31.8 MB]
