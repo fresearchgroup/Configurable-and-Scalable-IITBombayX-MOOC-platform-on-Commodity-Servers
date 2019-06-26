@@ -6,8 +6,9 @@ metadata:
     io.kompose.service: discovery-node-modules
   name: discovery-node-modules
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 100Mi

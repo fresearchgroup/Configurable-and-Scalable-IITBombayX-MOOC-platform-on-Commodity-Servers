@@ -6,8 +6,9 @@ metadata:
     io.kompose.service: ecommerce-node-modules
   name: ecommerce-node-modules
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 100Mi

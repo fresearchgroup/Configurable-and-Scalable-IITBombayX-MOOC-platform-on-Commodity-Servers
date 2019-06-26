@@ -6,8 +6,9 @@ metadata:
     io.kompose.service: lms-claim2
   name: lms-claim2
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 100Mi
