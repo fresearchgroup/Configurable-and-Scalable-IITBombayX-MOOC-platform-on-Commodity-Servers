@@ -6,8 +6,9 @@ metadata:
     io.kompose.service: edx-notes-api-claim1
   name: edx-notes-api-claim1
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 100Mi

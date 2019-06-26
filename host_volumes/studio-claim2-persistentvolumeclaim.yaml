@@ -6,8 +6,9 @@ metadata:
     io.kompose.service: studio-claim2
   name: studio-claim2
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 100Mi

@@ -6,8 +6,9 @@ metadata:
     io.kompose.service: ecommerce-claim2
   name: ecommerce-claim2
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 100Mi
