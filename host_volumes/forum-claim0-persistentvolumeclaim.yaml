@@ -6,8 +6,9 @@ metadata:
     io.kompose.service: forum-claim0
   name: forum-claim0
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 100Mi
