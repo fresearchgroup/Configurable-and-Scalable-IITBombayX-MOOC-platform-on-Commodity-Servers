@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -30,7 +30,7 @@ spec:
         - name: TEST_ELASTICSEARCH_URL
           value: http://edx.devstack.elasticsearch:9200
         image: edxops/discovery:ironwood.master
-        name: edx-devstack-discovery
+        name: edx.devstack.discovery
         ports:
         - containerPort: 18381
         resources: {}
@@ -39,10 +39,25 @@ spec:
         volumeMounts:
         - mountPath: /edx/var/discovery/
           name: discovery-assets
-      hostname: discovery-devstack-edx
+        - mountPath: /edx/app/discovery/discovery
+          name: course-discovery
+        - mountPath: /edx/app/discovery/discovery/node_modules
+          name: discovery-node-modules
+        - mountPath: /edx/src
+          name: edx-src
+      hostname: discovery.devstack.edx
       restartPolicy: Always
       volumes:
       - name: discovery-assets
         persistentVolumeClaim:
           claimName: discovery-assets
+      - name: course-discovery
+        persistentVolumeClaim:
+          claimName: course-discovery
+      - name: discovery-node-modules
+        persistentVolumeClaim:
+          claimName: discovery-node-modules
+      - name: edx-src
+        persistentVolumeClaim:
+          claimName: edx-src
 status: {}
