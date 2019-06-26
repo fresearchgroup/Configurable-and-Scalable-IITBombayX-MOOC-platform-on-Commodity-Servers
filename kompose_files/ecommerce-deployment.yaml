@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -10,7 +10,8 @@ metadata:
   name: ecommerce
 spec:
   replicas: 1
-  strategy: {}
+  strategy:
+    type: Recreate
   template:
     metadata:
       creationTimestamp: null
@@ -27,12 +28,29 @@ spec:
         - name: ENABLE_DJANGO_TOOLBAR
           value: "1"
         image: edxops/ecommerce:ironwood.master
-        name: edx-devstack-ecommerce
+        name: edx.devstack.ecommerce
         ports:
         - containerPort: 18130
         resources: {}
         stdin: true
         tty: true
-      hostname: ecommerce-devstack-edx
+        volumeMounts:
+        - mountPath: /edx/app/ecommerce/ecommerce
+          name: ecommerce
+        - mountPath: /edx/app/ecommerce/ecommerce/node_modules
+          name: ecommerce-node-modules
+        - mountPath: /edx/src
+          name: edx-src
+      hostname: ecommerce.devstack.edx
       restartPolicy: Always
+      volumes:
+      - name: ecommerce
+        persistentVolumeClaim:
+          claimName: ecommerce
+      - name: ecommerce-node-modules
+        persistentVolumeClaim:
+          claimName: ecommerce-node-modules
+      - name: edx-src
+        persistentVolumeClaim:
+          claimName: edx-src
 status: {}

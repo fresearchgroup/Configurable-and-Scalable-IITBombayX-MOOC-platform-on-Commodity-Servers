@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - image: edxops/firefox:ironwood.master
-        name: edx-devstack-firefox
+        name: edx.devstack.firefox
         ports:
         - containerPort: 5900
         resources: {}
@@ -29,7 +29,7 @@ spec:
           name: firefox-claim0
         - mountPath: /edx/app/edxapp/edx-platform/common/test/data
           name: firefox-claim1
-      hostname: firefox-devstack-edx
+      hostname: firefox.devstack.edx
       restartPolicy: Always
       volumes:
       - name: firefox-claim0

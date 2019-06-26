@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -26,12 +26,12 @@ spec:
         - --storageEngine
         - wiredTiger
         image: mongo:3.2.16
-        name: edx-devstack-mongo
+        name: edx.devstack.mongo
         resources: {}
         volumeMounts:
         - mountPath: /data/db
           name: mongo-data
-      hostname: mongo-devstack-edx
+      hostname: mongo.devstack.edx
       restartPolicy: Always
       volumes:
       - name: mongo-data

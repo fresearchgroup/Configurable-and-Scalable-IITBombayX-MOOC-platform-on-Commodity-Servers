@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -10,7 +10,8 @@ metadata:
   name: edx-notes-api
 spec:
   replicas: 1
-  strategy: {}
+  strategy:
+    type: Recreate
   template:
     metadata:
       creationTimestamp: null
@@ -42,10 +43,22 @@ spec:
         - name: ENABLE_DJANGO_TOOLBAR
           value: "1"
         image: edxops/notes:ironwood.master
-        name: edx-devstack-edx-notes-api
+        name: edx.devstack.edx_notes_api
         ports:
         - containerPort: 18120
         resources: {}
-      hostname: edx-notes-api-devstack-edx
+        volumeMounts:
+        - mountPath: /edx/app/edx_notes_api/edx_notes_api
+          name: edx-notes-api
+        - mountPath: /edx/src
+          name: edx-src
+      hostname: edx_notes_api.devstack.edx
       restartPolicy: Always
+      volumes:
+      - name: edx-notes-api
+        persistentVolumeClaim:
+          claimName: edx-notes-api
+      - name: edx-src
+        persistentVolumeClaim:
+          claimName: edx-src
 status: {}

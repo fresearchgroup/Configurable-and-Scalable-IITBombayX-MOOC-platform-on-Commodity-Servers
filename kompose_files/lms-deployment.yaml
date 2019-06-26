@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -35,8 +35,8 @@ spec:
           value: edx.devstack.mongo
         - name: NO_PYTHON_UNINSTALL
           value: "1"
-        image: edxops/edxapp:ironwood.master
-        name: edx-devstack-lms
+        image: gauravpatil/edxapp:ironwood.master
+        name: edx.devstack.lms
         ports:
         - containerPort: 18000
         - containerPort: 19876
@@ -46,10 +46,25 @@ spec:
         volumeMounts:
         - mountPath: /edx/var/edxapp/staticfiles/
           name: edxapp-lms-assets
-      hostname: lms-devstack-edx
+        - mountPath: /edx/app/edxapp/edx-platform
+          name: edx-platform
+        - mountPath: /edx/app/edxapp/edx-platform/node_modules
+          name: edxapp-node-modules
+        - mountPath: /edx/src
+          name: edx-src
+      hostname: lms.devstack.edx
       restartPolicy: Always
       volumes:
       - name: edxapp-lms-assets
         persistentVolumeClaim:
           claimName: edxapp-lms-assets
+      - name: edx-platform
+        persistentVolumeClaim:
+          claimName: edx-platform
+      - name: edxapp-node-modules
+        persistentVolumeClaim:
+          claimName: edxapp-node-modules
+      - name: edx-src
+        persistentVolumeClaim:
+          claimName: edx-src
 status: {}

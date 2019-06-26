@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -20,20 +20,20 @@ spec:
     spec:
       containers:
       - image: edxops/elasticsearch:devstack
-        name: edx-devstack-elasticsearch
+        name: edx.devstack.elasticsearch
         resources: {}
         volumeMounts:
         - mountPath: /usr/share/elasticsearch/data
           name: elasticsearch-data
         - mountPath: /usr/share/elasticsearch/logs
-          name: elasticsearch-data1
-      hostname: elasticsearch-devstack-edx
+          name: elasticsearch-data
+      hostname: elasticsearch.devstack.edx
       restartPolicy: Always
       volumes:
       - name: elasticsearch-data
         persistentVolumeClaim:
           claimName: elasticsearch-data
-      - name: elasticsearch-data1
+      - name: elasticsearch-data
         persistentVolumeClaim:
-          claimName: elasticsearch-data1
+          claimName: elasticsearch-data
 status: {}

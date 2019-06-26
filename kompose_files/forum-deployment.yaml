@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
@@ -10,7 +10,8 @@ metadata:
   name: forum
 spec:
   replicas: 1
-  strategy: {}
+  strategy:
+    type: Recreate
   template:
     metadata:
       creationTimestamp: null
@@ -25,10 +26,17 @@ spec:
           && cd /edx/app/forum/cs_comments_service && bundle install && while true;
           do ruby app.rb -o 0.0.0.0 ; sleep 2; done
         image: edxops/forum:ironwood.master
-        name: edx-devstack-forum
+        name: edx.devstack.forum
         ports:
         - containerPort: 4567
         resources: {}
-      hostname: forum-devstack-edx
+        volumeMounts:
+        - mountPath: /edx/app/forum/cs_comments_service
+          name: cs-comments-service
+      hostname: forum.devstack.edx
       restartPolicy: Always
+      volumes:
+      - name: cs-comments-service
+        persistentVolumeClaim:
+          claimName: cs-comments-service
 status: {}
