@@ -28,7 +28,7 @@ spec:
         - name: ENABLE_DJANGO_TOOLBAR
           value: "1"
         image: edxops/ecommerce:ironwood.master
-        name: edx.devstack.ecommerce
+        name: edx-devstack-ecommerce
         ports:
         - containerPort: 18130
         resources: {}
@@ -36,21 +36,21 @@ spec:
         tty: true
         volumeMounts:
         - mountPath: /edx/app/ecommerce/ecommerce
-          name: ecommerce
+          name: ecommerce-claim0
         - mountPath: /edx/app/ecommerce/ecommerce/node_modules
           name: ecommerce-node-modules
         - mountPath: /edx/src
-          name: edx-src
-      hostname: ecommerce.devstack.edx
+          name: ecommerce-claim2
+      hostname: ecommerce-devstack-edx
       restartPolicy: Always
       volumes:
-      - name: ecommerce
+      - name: ecommerce-claim0
         persistentVolumeClaim:
-          claimName: ecommerce
+          claimName: ecommerce-claim0
       - name: ecommerce-node-modules
         persistentVolumeClaim:
           claimName: ecommerce-node-modules
-      - name: edx-src
+      - name: ecommerce-claim2
         persistentVolumeClaim:
-          claimName: edx-src
+          claimName: ecommerce-claim2
 status: {}

@@ -26,17 +26,17 @@ spec:
           && cd /edx/app/forum/cs_comments_service && bundle install && while true;
           do ruby app.rb -o 0.0.0.0 ; sleep 2; done
         image: edxops/forum:ironwood.master
-        name: edx.devstack.forum
+        name: edx-devstack-forum
         ports:
         - containerPort: 4567
         resources: {}
         volumeMounts:
         - mountPath: /edx/app/forum/cs_comments_service
-          name: cs-comments-service
-      hostname: forum.devstack.edx
+          name: forum-claim0
+      hostname: forum-devstack-edx
       restartPolicy: Always
       volumes:
-      - name: cs-comments-service
+      - name: forum-claim0
         persistentVolumeClaim:
-          claimName: cs-comments-service
+          claimName: forum-claim0
 status: {}

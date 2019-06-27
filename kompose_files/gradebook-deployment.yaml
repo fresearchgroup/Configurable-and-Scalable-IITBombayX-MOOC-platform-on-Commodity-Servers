@@ -27,21 +27,21 @@ spec:
         - name: NODE_ENV
           value: development
         image: node:10
-        name: edx.devstack.gradebook
+        name: edx-devstack-gradebook
         ports:
         - containerPort: 1994
         resources: {}
         volumeMounts:
         - mountPath: /edx/app/gradebook
-          name: gradebook
+          name: gradebook-claim0
         - mountPath: /edx/app/gradebook/node_modules
           name: gradebook-node-modules
         workingDir: /edx/app/gradebook
       restartPolicy: Always
       volumes:
-      - name: gradebook
+      - name: gradebook-claim0
         persistentVolumeClaim:
-          claimName: gradebook
+          claimName: gradebook-claim0
       - name: gradebook-node-modules
         persistentVolumeClaim:
           claimName: gradebook-node-modules

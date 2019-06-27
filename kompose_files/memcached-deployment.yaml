@@ -19,8 +19,8 @@ spec:
     spec:
       containers:
       - image: memcached:1.4.24
-        name: edx.devstack.memcached
+        name: edx-devstack-memcached
         resources: {}
-      hostname: memcached.devstack.edx
+      hostname: memcached-devstack-edx
       restartPolicy: Always
 status: {}

@@ -26,12 +26,12 @@ spec:
         - --storageEngine
         - wiredTiger
         image: mongo:3.2.16
-        name: edx.devstack.mongo
+        name: edx-devstack-mongo
         resources: {}
         volumeMounts:
         - mountPath: /data/db
           name: mongo-data
-      hostname: mongo.devstack.edx
+      hostname: mongo-devstack-edx
       restartPolicy: Always
       volumes:
       - name: mongo-data

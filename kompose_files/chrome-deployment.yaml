@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - image: edxops/chrome:ironwood.master
-        name: edx.devstack.chrome
+        name: edx-devstack-chrome
         ports:
         - containerPort: 5900
         resources: {}
@@ -29,7 +29,7 @@ spec:
           name: chrome-claim0
         - mountPath: /edx/app/edxapp/edx-platform/common/test/data
           name: chrome-claim1
-      hostname: chrome.devstack.edx
+      hostname: chrome-devstack-edx
       restartPolicy: Always
       volumes:
       - name: chrome-claim0
