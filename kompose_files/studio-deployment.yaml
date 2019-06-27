@@ -36,7 +36,7 @@ spec:
         - name: NO_PYTHON_UNINSTALL
           value: "1"
         image: gauravpatil/edxapp:ironwood.master
-        name: edx.devstack.studio
+        name: edx-devstack-studio
         ports:
         - containerPort: 18010
         - containerPort: 19877
@@ -47,24 +47,24 @@ spec:
         - mountPath: /edx/var/edxapp/staticfiles/
           name: edxapp-studio-assets
         - mountPath: /edx/app/edxapp/edx-platform
-          name: edx-platform
+          name: studio-claim0
         - mountPath: /edx/app/edxapp/edx-platform/node_modules
           name: edxapp-node-modules
         - mountPath: /edx/src
-          name: edx-src
-      hostname: studio.devstack.edx
+          name: studio-claim2
+      hostname: studio-devstack-edx
       restartPolicy: Always
       volumes:
       - name: edxapp-studio-assets
         persistentVolumeClaim:
           claimName: edxapp-studio-assets
-      - name: edx-platform
+      - name: studio-claim0
         persistentVolumeClaim:
-          claimName: edx-platform
+          claimName: studio-claim0
       - name: edxapp-node-modules
         persistentVolumeClaim:
           claimName: edxapp-node-modules
-      - name: edx-src
+      - name: studio-claim2
         persistentVolumeClaim:
-          claimName: edx-src
+          claimName: studio-claim2
 status: {}

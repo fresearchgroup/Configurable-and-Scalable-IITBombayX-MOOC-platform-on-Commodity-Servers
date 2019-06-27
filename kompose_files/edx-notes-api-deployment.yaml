@@ -43,22 +43,22 @@ spec:
         - name: ENABLE_DJANGO_TOOLBAR
           value: "1"
         image: edxops/notes:ironwood.master
-        name: edx.devstack.edx_notes_api
+        name: edx-devstack-edx-notes-api
         ports:
         - containerPort: 18120
         resources: {}
         volumeMounts:
         - mountPath: /edx/app/edx_notes_api/edx_notes_api
-          name: edx-notes-api
+          name: edx-notes-api-claim0
         - mountPath: /edx/src
-          name: edx-src
-      hostname: edx_notes_api.devstack.edx
+          name: edx-notes-api-claim1
+      hostname: edx-notes-api-devstack-edx
       restartPolicy: Always
       volumes:
-      - name: edx-notes-api
+      - name: edx-notes-api-claim0
         persistentVolumeClaim:
-          claimName: edx-notes-api
-      - name: edx-src
+          claimName: edx-notes-api-claim0
+      - name: edx-notes-api-claim1
         persistentVolumeClaim:
-          claimName: edx-src
+          claimName: edx-notes-api-claim1
 status: {}
