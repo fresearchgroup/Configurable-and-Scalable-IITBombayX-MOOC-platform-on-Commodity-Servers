@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: credentials-volume2
+  name: edxapp-studio-assets-volume
   labels:
     type: local
 spec:
@@ -12,4 +12,4 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Delete
   hostPath:
-    path: /edx/src
+    path: /edx/var/edxapp/staticfiles/

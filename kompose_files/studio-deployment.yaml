@@ -35,7 +35,7 @@ spec:
           value: edx.devstack.mongo
         - name: NO_PYTHON_UNINSTALL
           value: "1"
-        image: gauravpatil/edxapp:ironwood.master
+        image: edxops/edxapp:ironwood.master
         name: edx-devstack-studio
         ports:
         - containerPort: 18010
