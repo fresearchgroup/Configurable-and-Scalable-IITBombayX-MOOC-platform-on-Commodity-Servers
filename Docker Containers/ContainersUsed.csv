@@ -1,0 +1,16 @@
+CONTAINER ID   IMAGE                          COMMAND                 CREATED         PORTS                                                 NAMES                  
+38762c5f64c8   edxops/chrome:ironwood.master  "/bin/sh -c 'export …"  About an hour a 4444/tcp, 0.0.0.0:15900->5900/tcp                     edx.devstack.chrome    
+83e8ba12eeb6   edxops/firefox:ironwood.master "/bin/sh -c 'export …"  About an hour a 4444/tcp, 0.0.0.0:25900->5900/tcp                     edx.devstack.firefox   
+32b7d83bddda   node:10                        "bash -c 'npm instal…"  About an hour a 0.0.0.0:1994->1994/tcp                                edx.devstack.gradebook 
+f233b93414cb   edxops/notes:ironwood.master   "bash -c 'source /ed…"  15 hours ago    0.0.0.0:18120->18120/tcp                              edx.devstack.edx_notes_
+f34b91666ee3   edxops/forum:ironwood.master   "bash -c 'source /ed…"  15 hours ago    0.0.0.0:44567->4567/tcp                               edx.devstack.forum     
+6a8a97abe3cb   edxops/credentials:ironwood.ma "bash -c 'source /ed…"  15 hours ago    0.0.0.0:18150->18150/tcp                              edx.devstack.credential
+624222d6bdb1   edxops/discovery:ironwood.mast "bash -c 'source /ed…"  16 hours ago    0.0.0.0:18381->18381/tcp                              edx.devstack.discovery 
+45f3d7a31ca9   edxops/elasticsearch:devstack  "/docker-entrypoint.…"  16 hours ago    9200/tcp, 9300/tcp                                    edx.devstack.elasticsea
+b3e26239fdf0   edxops/ecommerce:ironwood.mast "bash -c 'source /ed…"  16 hours ago    0.0.0.0:18130->18130/tcp                              edx.devstack.ecommerce 
+6b9a69692499   edxops/edxapp:ironwood.master  "bash -c 'source /ed…"  20 hours ago    0.0.0.0:18010->18010/tcp, 18000/tcp, 0.0.0.0:19877->  edx.devstack.studio    
+b8715b217dc2   edxops/edxapp:ironwood.master  "bash -c 'source /ed…"  20 hours ago    0.0.0.0:18000->18000/tcp, 0.0.0.0:19876->19876/tcp,   edx.devstack.lms       
+96aaa4eba545   memcached:1.4.24               "/entrypoint.sh memc…"  20 hours ago    11211/tcp                                             edx.devstack.memcached 
+ca2f968fc6d6   edxops/devpi:ironwood.master   "/docker-entrypoint.…"  20 hours ago    0.0.0.0:3141->3141/tcp                                edx.devstack.devpi     
+02370e9a1448   mongo:3.2.16                   "docker-entrypoint.s…"  24 hours ago    27017/tcp                                             edx.devstack.mongo     
+6fd7daa99c45   mysql:5.6                      "docker-entrypoint.s…"  24 hours ago    3306/tcp                                              edx.devstack.mysql     
