@@ -1,0 +1,20 @@
+Label,# Samples,Average,Min,Max,Std. Dev.,Error %,Throughput,Received KB/sec,Sent KB/sec,Avg. Bytes
+505 /,60,45720,65,67966,21874.03,0.000%,.01887,0.58,0.07,31202.7
+572 /register,60,41969,315,54448,17739.53,0.000%,.01859,0.70,0.11,38549.2
+606 /user_api/v1/account/registration/,60,12049,3183,16794,2432.88,0.000%,.01849,0.05,0.04,2516.6
+607 /,60,30228,27788,34045,1268.76,0.000%,.01833,0.50,0.08,27842.0
+608 /dashboard,60,30258,28003,33901,1294.17,0.000%,.01834,0.49,0.04,27328.9
+620 /courses,60,11264,3047,17583,3377.43,0.000%,.01848,0.45,0.04,24769.0
+623 /courses/course-v1:edX+DemoX+Demo_Course/about,60,39603,30718,49094,3607.05,0.000%,.01828,0.52,0.04,29282.2
+630 /change_enrollment,60,1884,750,3192,546.91,0.000%,.01849,0.01,0.05,443.0
+631 /dashboard,60,50971,35640,61853,6081.16,0.000%,.01827,0.57,0.04,32168.1
+634 /courses/course-v1:edX+DemoX+Demo_Course/course/,60,80800,63578,95378,8477.24,0.000%,.01809,1.54,0.04,86914.9
+650 /event,60,647,247,1453,301.12,0.000%,.01848,0.01,0.05,450.0
+701 /event,60,676,222,1745,306.80,0.000%,.01848,0.01,0.05,450.0
+702 /courses/course-v1:edX+DemoX+Demo_Course/jump_to/block-v1:edX+DemoX+Demo_Course+type@vertical+block@54bb9b142c6c4c22afc62bcb628f0e68,60,131800,126434,138025,2369.10,0.000%,.01779,9.31,0.09,535781.9
+739 /courses/course-v1:edX+DemoX+Demo_Course/courseware/interactive_demonstrations/basic_questions/3,50,100446,90343,115660,7293.53,0.000%,.01845,9.64,0.05,535058.8
+814 /courses/course-v1:edX+DemoX+Demo_Course/discussion/forum/cba3e4cd91d0466b9ac50926e495b76f/inline,50,3417,1213,6092,1063.30,0.000%,.01913,0.05,0.05,2721.9
+817 /event,50,563,180,1147,230.95,0.000%,.01916,0.01,0.06,450.0
+818 /courses/course-v1:edX+DemoX+Demo_Course/xblock/block-v1:edX+DemoX+Demo_Course+type@problem+block@a0effb954cca4759994f1ac9e9434bf4/handler/xmodule_handler/problem_check,50,7637,3211,12106,1912.21,0.000%,.01910,0.21,0.06,11332.0
+819 /event,50,776,277,1475,291.00,0.000%,.01914,0.01,0.32,450.0
+TOTAL,1030,33315,65,138025,37722.73,0.000%,.28285,20.85,1.05,75497.6
