@@ -1,0 +1,11 @@
+Quiz Test Scenario:
+
+The user registers on the website.
+The user views a list of available courses.
+The user chooses a test course.
+The user enrolls in the chosen course.
+The user views the chosen course’s dashboard .
+The user chooses the quiz modules.
+The user attempts the quiz.
+The user submits the quiz responses for evaluation.
+
